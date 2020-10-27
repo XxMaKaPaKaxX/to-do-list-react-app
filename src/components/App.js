@@ -7,7 +7,7 @@ import TaskList from './TaskList';
 class App extends React.Component {
   state = {
     tasks: [
-      {
+      /* {
         id: 0,
         text: 'zagrać w wiedźmina',
         date: '2018-02-15',
@@ -23,7 +23,7 @@ class App extends React.Component {
       { id: 5, text: "jeszcze raz pomalować dom", date: '2019-09-11', important: false, active: true, finishDate: null },
       { id: 6, text: "fryzjer!!!", date: '2019-05-20', important: true, active: true, finishDate: null },
       { id: 7, text: "nie odbierać poleconego od komornika", date: '2020-11-12', important: false, active: true, finishDate: null },
-      { id: 8, text: "kupić 2 butelki litrowe", date: '2019-09-11', important: false, active: true, finishDate: null },
+      { id: 8, text: "kupić 2 butelki litrowe", date: '2019-09-11', important: false, active: true, finishDate: null }, */
     ]
   }
 
@@ -50,6 +50,16 @@ class App extends React.Component {
     })
   }
 
+  toAddTask = (task) => {
+    this.setState(prevState => {
+      const tasks = [...prevState.tasks];
+      tasks.push(task);
+      return ({
+        tasks
+      })
+    })
+  }
+
 
 
 
@@ -57,7 +67,7 @@ class App extends React.Component {
     return (
       <div className="App">
         <h1>ToDo App</h1>
-        <AddTask />
+        <AddTask toAddTask={this.toAddTask} />
         <TaskList tasks={this.state.tasks} delete={this.deleteTask} done={this.changeTaskStatus} />
       </div>
     );

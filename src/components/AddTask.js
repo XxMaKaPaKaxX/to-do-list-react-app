@@ -8,6 +8,8 @@ class AddTask extends React.Component {
         date: new Date().toISOString().slice(0, 10) /* data dynamiczna */
     }
 
+    startIndexForAddedTask = 0;
+
     handleDate = (e) => {
         this.setState({
             date: e.target.value
@@ -27,7 +29,18 @@ class AddTask extends React.Component {
     }
 
     handleClickButton = () => {
-        
+        const newTask = { id: this.startIndexForAddedTask, text: this.state.text, date: this.state.date, important: this.state.checked, active: true, finishDate: null };
+        if (this.state.text) {
+            this.props.toAddTask(newTask);
+            this.startIndexForAddedTask += 1;
+            this.setState({ 
+                text: "",
+                checked: false,
+                date: new Date().toISOString().slice(0, 10)
+            })
+        } else {
+            return alert("Wprowadź zadanie do wykonania")
+        }                
     }
 
     render() { 
