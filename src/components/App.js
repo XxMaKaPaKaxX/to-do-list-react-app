@@ -60,14 +60,11 @@ class App extends React.Component {
     })
   }
 
-
-
-
   render() {
     return (
       <div className="App">
         <h1>ToDo App</h1>
-        <AddTask toAddTask={this.toAddTask} />
+        <AddTask toAddTask={this.toAddTask} /* startIndexForFirstAddedTask={this.state.tasks.length} */ /> {/* przekazać wartość przes propsy */}
         <TaskList tasks={this.state.tasks} delete={this.deleteTask} done={this.changeTaskStatus} />
       </div>
     );

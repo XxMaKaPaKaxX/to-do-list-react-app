@@ -2,9 +2,15 @@ import React from 'react';
 import Task from './Task'
 
 const TaskList = (props) => {
+
+    const sortMetodForDone = (a, b) => b.finishDate - a.finishDate; 
+
     
-    const activeTasks = props.tasks.filter(task => task.active).map(task => <Task key={task.id} task={task} delete={props.delete} done={props.done}/>)
-    const doneTasks = props.tasks.filter(task => !task.active).map(task => <Task key={task.id} task={task} delete={props.delete} done={props.done}/>)
+    const activeTasks = props.tasks.filter(task => task.active)
+        .map(task => <Task key={task.id} task={task} delete={props.delete} done={props.done}/>)
+    const doneTasks = props.tasks.filter(task => !task.active)
+        .sort(sortMetodForDone)
+        .map(task => <Task key={task.id} task={task} delete={props.delete} done={props.done}/>)
     const countOfVisibleDoneTasks = 5; /// zrobić to kontrolowanym przez użytkownika
     return (  
         <div className="task__list">
