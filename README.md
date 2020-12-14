@@ -7,6 +7,6 @@ Simple ToDo list application based on React. Functionalities:
 * tasks sorting according to the date of accomplishment. 
 
 
-You can see this project on my [GitHub Pages](https://www.google.com)
+You can see this project on my [GitHub Pages](https://xxmakapakaxx.github.io/to-do-list-react-app/)
 
 ![appScreen](./public/appScreen.png)
